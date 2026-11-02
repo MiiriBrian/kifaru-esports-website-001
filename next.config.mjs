@@ -2,6 +2,7 @@
 const nextConfig = {
   /* config options here */
   cacheComponents: true,
+  devIndicators:false,
   partialPrefetching: true,
   turbopack: {
     rules: {

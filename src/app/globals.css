@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-bg: #12140a;
+  --color-surface: #1a1d0e;
+  --color-olive: #343918;
+  --color-brown: #b17f4c;
+  --color-tan: #b08760;
+  --color-cream: #f2ebdd;
+  --color-muted: #a89f8c;
+  --color-line: #3a3f1f;
+  --color-slate: #5f8f94;
+  --font-display: var(--font-oswald), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+}
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgb(177 127 76 / 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(177 127 76 / 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+.text-outline {
+  -webkit-text-stroke: 1.5px var(--color-brown);
+  color: transparent;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes spin-slow-rev {
+  to { transform: rotate(-360deg); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.spin-slow { animation: spin-slow 40s linear infinite; }
+.spin-slow-rev { animation: spin-slow-rev 60s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float, .spin-slow, .spin-slow-rev { animation: none; }
 }
